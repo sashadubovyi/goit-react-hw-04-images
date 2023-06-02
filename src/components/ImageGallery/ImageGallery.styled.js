@@ -31,9 +31,27 @@ export const MoreBtn = styled.button`
   }
 `;
 
-export const Error = styled.h1`
-  transition: 0.5s linear;
+export const Error = styled.p`
+  margin-top: 10px;
+  padding: 2px;
+  text-align: center;
   font-family: monospace;
   letter-spacing: 1px;
   color: #fa4753;
+  font-size: 15px;
+  transition: 0.3s linear;
+  border: 1px solid #fa4753;
+  animation: blink-1 0.6s both;
+
+  @keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
 `;

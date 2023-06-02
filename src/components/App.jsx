@@ -1,32 +1,25 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Main } from './App.styled';
 import SearchForm from './SearchForm/SearchForm';
 import ImageGallery from './ImageGallery/ImageGallery';
-import PropTypes from 'prop-types';
 
-class App extends Component {
-  state = {
-    search: '',
+const App = () => {
+  const [search, setSearch] = useState('');
+
+  const handleSearch = value => {
+    setSearch(value);
   };
 
-  handleSearch = search => {
-    this.setState({ search });
-  };
+  useEffect(() => {
+    setSearch('');
+  }, []);
 
-  render() {
-    return (
-      <Main>
-        <SearchForm handleSearch={this.handleSearch} />
-        <ImageGallery search={this.state.search} />
-      </Main>
-    );
-  }
-}
-
-App.propTypes = {
-  state: PropTypes.shape({
-    search: PropTypes.string.isRequired,
-  }),
+  return (
+    <Main>
+      <SearchForm handleSearch={handleSearch} />
+      <ImageGallery key={search} search={search} />
+    </Main>
+  );
 };
 
 export default App;
